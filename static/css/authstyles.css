@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    width: 80%;
+    height: 80%;
+}
+
+.container .sub-container{
+    width: 50%;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-container h1{
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+}
+.sub-container .sch-image{
+    width: 300px;
+    height: 300px;
+    margin: 50px;
+}
+
+.container .form-container{
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 5%;
+    text-align: center;
+
+}
+.form-container h1{
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+}
+.container .form-container form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.form-container form .form-group{
+    display: flex;
+    flex-direction: column;
+}
+.form-group input{
+    outline: none !important;
+    border: none;
+    height: 30px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #dbdbdb;
+}
+form button{
+    outline: none !important;
+    border: none;
+    height: 60px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+    display: inline-block;
+}

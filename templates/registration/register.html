@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/authstyles.css' %}">
+  <title>Register</title>
+</head>
+<body>
+  <div class="container">
+    <div class="sub-container">
+      <h1>School Management System</h1>
+      <p>Management made easy</p>
+      <img src="{% static 'images/sch.png' %}" alt="school image" class="sch-image">
+      <p>&copy; 2024 School Management System</p>
+    </div>
+    <div class="form-container">
+      <h1>Register</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+  </div>
+</body>
+</html>

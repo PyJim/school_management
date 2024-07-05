@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Activation Link Invalid{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2>Activation Link Invalid</h2>
+    <p>Sorry, the activation link is invalid or has expired. Please request a new activation link.</p>
+    <p>If you haven't received the activation email, you can try logging in and we will resend the activation email.</p>
+    <p><a href="{% url 'login' %}">Go to Login</a></p>
+</div>
+{% endblock %}
