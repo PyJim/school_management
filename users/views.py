@@ -12,7 +12,6 @@ from django.template.loader import get_template
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.sites.shortcuts import get_current_site
-from django.contrib.auth.tokens import default_token_generator
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 import threading
@@ -115,31 +114,6 @@ class CustomLoginView(LoginView):
 
 class CustomLogoutView(LogoutView):
     next_page = reverse_lazy('login')
-
-
-class TeacherIndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'teacher/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['user'] = self.request.user
-        return context
-
-class StudentIndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'student/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['user'] = self.request.user
-        return context
-
-class AdministratorIndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'administrator/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['user'] = self.request.user
-        return context
 
 
 class ActivateAccountView(View):

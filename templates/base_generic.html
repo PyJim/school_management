@@ -26,16 +26,40 @@
                     Modules & Dashboard
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
+                    {% if user.role == 'student' %}
+                        <a href="{% url 'student_index' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    {% elif user.role == 'admin' %}
+                        <a href="{% url 'administrator_index' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    {% elif user.role == 'teacher' %}
+                        <a href="{% url 'teacher_index' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    {% endif %}
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-user"></i>
-                        <span>Profile</span>
-                    </a>
+                    {% if user.role == 'student' %}
+                        <a href="{% url 'student_profile' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    {% elif user.role == 'admin' %}
+                        <a href="{% url 'administrator_profile' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    {% elif user.role == 'teacher' %}
+                        <a href="{% url 'teacher_profile' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    {% endif %}
                 </li>
                 
                 <li class="sidebar-item">
@@ -45,17 +69,52 @@
                         <span>Academics</span>
                     </a>
                     <ul id="aca" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Courses</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Classes</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Grades</a>
-                        </li>
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_courses' %}" class="sidebar-link">Courses</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_courses' %}" class="sidebar-link">Courses</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_courses' %}" class="sidebar-link">Courses</a>
+                            </li>
+                        {% endif %}
+
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_classes' %}" class="sidebar-link">Classes</a>
+                            </li>
+
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_classes' %}" class="sidebar-link">Classes</a>
+                            </li>
+                        {% endif %}
+
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_grades' %}" class="sidebar-link">Grades</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_grades' %}" class="sidebar-link">Grades</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_grades' %}" class="sidebar-link">Grades</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </li>
+
+
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#people" aria-expanded="true" aria-controls="people">
@@ -63,14 +122,52 @@
                         <span>People</span>
                     </a>
                     <ul id="people" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Students</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Teachers</a>
-                        </li>
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_admins' %}" class="sidebar-link">Aministrators</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_admins' %}" class="sidebar-link">Aministrators</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_admins' %}" class="sidebar-link">Aministrators</a>
+                            </li>
+                        {% endif %}
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_students' %}" class="sidebar-link">Students</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_students' %}" class="sidebar-link">Students</a>
+                            </li>
+                        {% endif %}
+
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_teachers' %}" class="sidebar-link">Teachers</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_teachers' %}" class="sidebar-link">Teachers</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_teachers' %}" class="sidebar-link">Teachers</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </li>
+
+
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#admin" aria-expanded="true" aria-controls="admin">
@@ -78,22 +175,70 @@
                         <span>Administration</span>
                     </a>
                     <ul id="admin" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Attendance</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Fees</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Announcements</a>
-                        </li>
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_attendance' %}" class="sidebar-link">Attendance</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_attendance' %}" class="sidebar-link">Attendance</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_attendance' %}" class="sidebar-link">Attendance</a>
+                            </li>
+                        {% endif %}
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_fees' %}" class="sidebar-link">Fees</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_fees' %}" class="sidebar-link">Fees</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_fees' %}" class="sidebar-link">Fees</a>
+                            </li>
+                        {% endif %}
+
+
+                        {% if user.role == 'admin' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'administrator_announcements' %}" class="sidebar-link">Announcements</a>
+                            </li>
+                        {% elif user.role == 'student' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'student_announcements' %}" class="sidebar-link">Announcements</a>
+                            </li>
+                        {% elif user.role == 'teacher' %}
+                            <li class="sidebar-item">
+                                <a href="{% url 'teacher_announcements' %}" class="sidebar-link">Announcements</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </li>
+
+
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-cog"></i>
-                        <span>Setting</span>
-                    </a>
+                    {% if user.role == 'student' %}
+                        <a href="{% url 'student_settings' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-cog"></i>
+                            <span>Setting</span>
+                        </a>
+                    {% elif user.role == 'admin' %}
+                        <a href="{% url 'administrator_settings' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-cog"></i>
+                            <span>Setting</span>
+                        </a>
+                    {% elif user.role == 'teacher' %}
+                        <a href="{% url 'teacher_settings' username=user.username %}" class="sidebar-link">
+                            <i class="lni lni-cog"></i>
+                            <span>Setting</span>
+                        </a>
+                    {% endif %}
                 </li>
             </ul>
             <!-- Sidebar Navigation Ends -->
@@ -114,6 +259,15 @@
                 <button class="toggler-btn" type="button">
                     <i class="lni lni-text-align-left"></i>
                 </button>
+                {% if user.role == 'student' %}
+                    <h2 class="dashboard-title">Student Dashboard</h2>
+                {% elif user.role == 'admin' %}
+                    <h2 class="dashboard-title">Administrator Dashboard</h2>
+                {% elif user.role == 'teacher' %}
+                    <h2 class="dashboard-title">Teacher Dashboard</h2>
+                {% endif %}
+
+                <p class="username">{{user.username}}</p>
             </nav>
             <main class="p-3">
                 <div class="container-fluid">

@@ -30,7 +30,7 @@ a {
 }
 
 #sidebar.collapsed {
-    margin-left: -264px;
+    margin-left: -300px;
 }
 
 .toggler-btn {
@@ -41,15 +41,27 @@ a {
 
 .toggler-btn i {
     font-size: 1.75rem;
-    color: #000;
+    color: #fff;
     font-weight: 1000;
 }
 
 .navbar {
     padding: 1.15rem 1.5rem;
-    border-bottom: 2px dashed #b3a8a8;
+    border-bottom: 2px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: #333;
 }
-
+.navbar .username{
+    text-transform: capitalize;
+    margin: 0;
+}
+.navbar .dashboard-title{
+    margin: 0;
+}
 .sidebar-nav {
     flex: 1 1 auto;
 }

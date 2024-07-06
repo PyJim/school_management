@@ -44,6 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'student',
+    'teacher',
+    'administration',
+    'courses',
+    'classes',
+    'grades',
+    'announcement',
+    'fees',
+    'attendance',
 ]
 
 MIDDLEWARE = [
